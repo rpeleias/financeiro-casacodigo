@@ -2,7 +2,8 @@
   (:require [financeiro.handler :refer :all]
             [midje.sweet :refer :all]
             [cheshire.core :as json]
-            [ring.mock.request :as mock]))
+            [ring.mock.request :as mock]
+            [financeiro.db :as db]))
 
 (facts "Dá um 'Hello World' na rota raiz"
        (let [response (app (mock/request :get "/"))]
@@ -28,3 +29,12 @@
                (:status response) => 200)
          (fact "o texto do corpo é um JSON cura chave é saldo e o valor é "
                (:body response) => "{\"saldo\":0)")))
+
+(facts "Regsitra uma receita no valor de 10"
+       (against-background (db/registrar {:valor 10 :tpo "receita"}) => {:id 1 :valor 10 :tipo "receita"})
+       (let [response
+             (app (-> (mock/request :post "/transacoes")
+                      (mock/json-body {:valor 10 :tipo "receita"})))]
+         (fact "o status da resposta é 201")
+         )
+       )
