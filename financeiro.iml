@@ -17,7 +17,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Leiningen: cheshire:5.8.0" level="project" />
+    <orderEntry type="library" name="Leiningen: cheshire:5.8.1" level="project" />
     <orderEntry type="library" name="Leiningen: clj-http:3.9.1" level="project" />
     <orderEntry type="library" name="Leiningen: clj-time:0.14.4" level="project" />
     <orderEntry type="library" name="Leiningen: clj-tuple:0.2.2" level="project" />
@@ -25,10 +25,10 @@
     <orderEntry type="library" name="Leiningen: clout:2.2.1" level="project" />
     <orderEntry type="library" name="Leiningen: colorize:0.1.1" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-annotations:2.18.2" level="project" />
-    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.18.2" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.9.6" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-databind:2.18.2" level="project" />
-    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-cbor:2.9.0" level="project" />
-    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-smile:2.9.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-cbor:2.9.6" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.dataformat/jackson-dataformat-smile:2.9.6" level="project" />
     <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.datatype/jackson-datatype-jsr310:2.18.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.rpl/specter:1.0.5" level="project" />
     <orderEntry type="library" name="Leiningen: com.squareup.okhttp3/okhttp:4.12.0" level="project" />

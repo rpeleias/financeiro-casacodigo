@@ -1,6 +1,7 @@
 (ns unitarios.financeiro.handler-test
   (:require [financeiro.handler :refer :all]
             [midje.sweet :refer :all]
+            [cheshire.core :as json]
             [ring.mock.request :as mock]))
 
 (facts "Dá um 'Hello World' na rota raiz"
@@ -18,8 +19,9 @@
                (:body response) => "Recurso não encontrado")))
 
 (facts "Saldo inicial é 0"
+       (against-background (json/generate-string { :saldo 0 }) => "{\"saldo\":0)")
        (let [response (app (mock/request :get "/saldo"))]
          (fact "o código de erro é 404"
                (:status response) => 200)
-         (fact "o texto do corpo é 0"
-               (:body response) => "0")))
+         (fact "o texto do corpo é um JSON cura chave é saldo e o valor é "
+               (:body response) => "{\"saldo\":0)")))
