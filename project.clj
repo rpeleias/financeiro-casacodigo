@@ -16,3 +16,4 @@
                         [ring/ring-jetty-adapter "1.7.1"]]
          :plugins [[lein-midje "3.2.1"]
                    [lein-cloverage "1.0.13"]]}})
+:test-paths ["test/unitarios" "test/aceitacao"]
