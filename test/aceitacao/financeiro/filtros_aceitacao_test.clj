@@ -20,18 +20,17 @@
         (json/parse-string (conteudo "/despesas") true) => {:transacoes '()})
 
   (fact "Não existem transações" :aceitacao
-        (json/parse-string (conteudo "/transacoes") true) => {:transacoes '()}))
+        (json/parse-string (conteudo "/transacoes") true) => {:transacoes '()})
 
 (against-background [(before :facts (doseq [transacao transacoes-aleatorias]
                                       (db/registrar transacao)))
                      (after :facts (db/limpar))]
 
   (fact "Existem 3 despesas" :aceitacao
-        (count (:transacoes (json/parse-string (conteudo "/despesas") => true))) => 3)
+        (count (:transacoes (json/parse-string (conteudo "/despesas") true))) => 3)
 
   (fact "Existe 1 receita" :aceitacao
-      (count (:transacoes (json/parse-string (conteudo "/receitas") => true))) => 1)
+      (count (:transacoes (json/parse-string (conteudo "/receitas") true))) => 1)
 
   (fact "Existem 4 transações" :aceitacao
-        (count (:transacoes (json/parse-string (conteudo "/transacoes") => true))) => 4)
-)
+        (count (:transacoes (json/parse-string (conteudo "/transacoes") true))) => 4)))

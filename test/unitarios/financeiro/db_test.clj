@@ -1,5 +1,6 @@
-(ns unitarios.financeiro.db
-  (:require [financeiro.db :refer :all]
+(ns unitarios.financeiro.db_test
+  (:require [financeiro.db :as db]
+            [financeiro.db :refer :all]
             [midje.sweet :refer :all]))
 
 (facts "Guarda uma transação num átomo"
@@ -36,3 +37,20 @@
                                  (registrar {:valor 1000 :tipo "receita"})
 
                                  (saldo) => 808)))
+
+(facts "fitlra transações por tipo"
+       (def transacoes-aleatorias '({:valor 2 :tipo "despesa"}
+                                    {:valor 10 :tipo "receita"}
+                                    {:valor 200 :tipo "despesa"}
+                                    {:valor 1000 :tipo "receita"}))
+       (against-background [(before :facts
+                                    [(limpar)
+                                     (doseq [transacao transacoes-aleatorias]
+                                       (registrar transacao))])]
+
+                           (fact "encontra apenas as receitas"
+                                 (db/transacoes-do-tipo "receita") => '({:valor 10 :tipo "receita"}
+                                                                        {:valor 1000 :tipo "receita"}))
+                           (fact "encontra apenas as despesas"
+                                 (db/transacoes-do-tipo "despesa") => '({:valor 2 :tipo "despesa"}
+                                                                        {:valor 200 :tipo "despesa"}))))
